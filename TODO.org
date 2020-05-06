@@ -1,0 +1,42 @@
+* TODO [Bug] Avoid firing =before-change-functions= on every redisplay
+
+On every redisplay the indicator is recalculated using =format-spec=
+which happens to trigger =before-change-functions= despite working in
+a temporary buffer.  It's unclear whether the bug is in code hooking
+=before-change-functions=, =before-change-functions= considering
+temporary buffers or using an function with an =:eval= spec.  Suppose
+the latter, the following changes need to be done:
+
+- Use a variable holding the mode line indicator.
+- Ensure the variable is rendered correctly in the mode line (it might
+  be necessary to mark it as risky variable).
+- Add code to all commands modifying the indicator state to update the
+  variable.
+
+* TODO [Feature] Add commands for moving window configs in frame
+
+The easiest way this could turn out is like in i3, with a command to
+move the window config from one slot to another one.  Essentially
+renaming and reordering.  The =C-M-= prefix could be used for
+predefined commands.
+
+* TODO [Feature] Add commands for moving window configs across frames
+
+Not sure how this should be designed.  There's a few problems:
+
+- It's hard to identify frames by a textual description, something
+  like using visual indicators (like putting a colored frame or
+  overlaying a big number) might fix this.
+- Specifying both slot to move to and frame can be tedious.  There's a
+  funny way of doing that with i3 where slots are numbered across
+  frames and window configs can be moved to a slot belonging to a
+  frame.
+
+* TODO [Enhancement] Improve documentation with screencasts
+
+Common workflows should be shown with GIFs displaying the modeline
+indicator, keys and commands used.
+
+* TODO [Enhancement] Add missing Vim Ex commands
+
+See [[evil.org]]
