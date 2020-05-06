@@ -47,7 +47,7 @@ will undo this change.
 The default key bindings are:
 
 | Key bind  | Function                         |
-|-----------|----------------------------------|
+|-----------+----------------------------------|
 | C-c C-w < | Switch to previous window config |
 | C-c C-w > | Switch to next window config     |
 | C-c C-w ' | Switch to last window config     |
@@ -85,7 +85,7 @@ for it as well.
 The extra key bindings are:
 
 | Key bind | Function                         |
-|----------|----------------------------------|
+|----------+----------------------------------|
 | C-<, gT  | Switch to previous window config |
 | C->, gt  | Switch to next window config     |
 | C-', zx  | Switch to last window config     |
