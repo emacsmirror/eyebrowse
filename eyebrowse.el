@@ -1,9 +1,9 @@
 ;;; eyebrowse.el --- Easy window config switching  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2014-2016 Vasilij Schneidermann <v.schneidermann@gmail.com>
+;; Copyright (C) 2014 Vasilij Schneidermann <mail@vasilij.de>
 
-;; Author: Vasilij Schneidermann <v.schneidermann@gmail.com>
-;; URL: https://github.com/wasamasa/eyebrowse
+;; Author: Vasilij Schneidermann <mail@vasilij.de>
+;; URL: https://depp.brause.cc/eyebrowse
 ;; Version: 0.7.8
 ;; Package-Requires: ((dash "2.7.0") (emacs "24.3.1"))
 ;; Keywords: convenience
@@ -31,8 +31,7 @@
 ;; window configurations.  It tries mimicking the tab behaviour of
 ;; `ranger`, a file manager.
 
-;; See the README for more info:
-;; https://github.com/wasamasa/eyebrowse
+;; See the README for more info: https://depp.brause.cc/eyebrowse
 
 ;;; Code:
 
