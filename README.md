@@ -138,7 +138,7 @@ but then a silly typo happened.  The typo stuck.  So did the new name.
 [desktop.el]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html#Saving-Emacs-Sessions
 [\#52]: https://github.com/wasamasa/eyebrowse/issues/52
 [elscreen]: https://github.com/shosti/elscreen
-[escreen]: https://github.com/emacsmirror/escreen
+[escreen]: https://github.com/emacsattic/escreen
 [perspective]: https://github.com/nex3/perspective-el
 [wconf]: https://github.com/ilohmar/wconf
 [workgroups]: https://github.com/tlh/workgroups.el
