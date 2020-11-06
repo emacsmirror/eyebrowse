@@ -561,6 +561,16 @@ The specific behaviour is tmux-like."
          (slot (eyebrowse-free-slot slots)))
     (eyebrowse-switch-to-window-config slot)))
 
+(defun eyebrowse-create-named-window-config ()
+  "Creates a window config at a yet unoccupied slot.
+User is prompted to provide a tag name, so the window config is
+created named."
+  (interactive)
+  (eyebrowse-create-window-config)
+  (eyebrowse-rename-window-config
+   (eyebrowse--get 'current-slot)
+   (read-string "Tag: ")))
+
 (defvar evil-motion-state-map)
 
 ;;;###autoload
