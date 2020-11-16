@@ -17,9 +17,9 @@ bottom modeline?  That's what you get to see after enabling eyebrowse.
 
 ## Installation
 
-Install via `package.el` from the [Marmalade] or [MELPA (stable)]
-repository by setting them up if you haven't already and executing
-`M-x package-install RET eyebrowse RET`.
+Install via `package.el` from the [MELPA (stable)] repository by
+setting them up if you haven't already and executing `M-x
+package-install RET eyebrowse RET`.
 
 ## Quick Tutorial
 
@@ -132,7 +132,6 @@ but then a silly typo happened.  The typo stuck.  So did the new name.
 [image]: img/eyebrows.gif
 [ranger]: https://ranger.github.io/
 [screenshot]: img/scrot.png
-[Marmalade]: https://marmalade-repo.org/
 [MELPA (stable)]: http://melpa.org/
 [evil]: https://bitbucket.org/lyro/evil/wiki/Home
 [desktop.el]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html#Saving-Emacs-Sessions
