@@ -115,6 +115,13 @@ as well:
 
 See [\#52] for further discussion.
 
+## Persistence
+
+[desktop.el] provides a built-in solution for saving and restoring
+window configurations. See [eyebrowse-restore] for an alternative
+solution to selectively restore window configurations, for example
+when using several frames.
+
 ## Alternatives
 
 The two most popular window configuration packages are [elscreen] and
@@ -136,6 +143,7 @@ but then a silly typo happened.  The typo stuck.  So did the new name.
 [evil]: https://bitbucket.org/lyro/evil/wiki/Home
 [desktop.el]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html#Saving-Emacs-Sessions
 [\#52]: https://github.com/wasamasa/eyebrowse/issues/52
+[eyebrowse-restore]: https://github.com/FrostyX/eyebrowse-restore
 [elscreen]: https://github.com/shosti/elscreen
 [escreen]: https://github.com/emacsattic/escreen
 [perspective]: https://github.com/nex3/perspective-el
