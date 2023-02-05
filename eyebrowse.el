@@ -480,6 +480,52 @@ prefix argument to select a slot by its number."
          (tag (or tag (read-string "Tag: " current-tag))))
     (setf (nth 2 window-config) tag)))
 
+(defun eyebrowse-move-window-config (old-slot new-slot &optional overwrite-existing)
+  "Move a window config from OLD-SLOT to NEW-SLOT.
+Signal an error if OLD-SLOT is not occupied, or if NEW-SLOT is
+already occupied and OVERWRITE-EXISTING is nil.
+
+When used interactively, move the current window config to the
+slot given as a numerical prefix argument, or in response to the
+prompt shown if none is given."
+  (interactive (list (eyebrowse--get 'current-slot)
+                     (if (numberp current-prefix-arg)
+                         current-prefix-arg
+                       (read-number "Move to slot: "
+                                    (eyebrowse-free-slot
+                                     (mapcar 'car (eyebrowse--get 'window-configs)))))))
+  (when (/= old-slot new-slot)
+    (let ((new-slot-exists (eyebrowse--window-config-present-p new-slot)))
+      (unless (eyebrowse--window-config-present-p old-slot)
+        (user-error "No window configuration in slot %d" old-slot))
+      (when (and new-slot-exists (not overwrite-existing))
+        (user-error "Window configuration already exists in slot %d" new-slot))
+      (let* ((current-slot (eyebrowse--get 'current-slot))
+             (last-slot (eyebrowse--get 'last-slot))
+             (window-configs (eyebrowse--get 'window-configs))
+             (old-config-element (assoc old-slot window-configs))
+             (new-config-element (cons new-slot (cdr old-config-element))))
+        ;; write existing config+tag to new-slot
+        (if new-slot-exists
+            (eyebrowse--update-window-config-element new-config-element)
+          (eyebrowse--insert-in-window-config-list new-config-element))
+        ;; update current-slot if equal to old-slot
+        (when (= current-slot old-slot)
+          (eyebrowse--set 'current-slot new-slot))
+        ;; update last-slot if equal to old-slot
+        (when (= last-slot old-slot)
+          (eyebrowse--set 'last-slot new-slot))
+        ;; remove element from old-slot
+        (eyebrowse--delete-window-config old-slot)))))
+
+(defun eyebrowse-consolidate-window-configs ()
+  "Renumber existing window configs in integer order starting at 1,
+maintaining the same relative order and tags."
+  (interactive)
+  (let* ((window-configs (eyebrowse--get 'window-configs))
+         (slots (mapcar 'car window-configs)))
+    (--each-indexed slots (eyebrowse-move-window-config it (1+ it-index)))))
+
 ;; NOTE I've tried out generating the respective commands dynamically
 ;; with a macro, but this ended in unreadable code and Emacs not being
 ;; able to locate the generated commands, using lexical binding and a
