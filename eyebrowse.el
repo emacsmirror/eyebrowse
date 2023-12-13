@@ -185,9 +185,8 @@ If t, ask for confirmation."
   :type 'boolean
   :group 'eyebrowse)
 
-(defvar eyebrowse-mode-map
-  (let ((map (make-sparse-keymap))
-        (prefix-map (make-sparse-keymap)))
+(defvar eyebrowse-mode-prefix-map
+  (let ((prefix-map (make-sparse-keymap)))
     (define-key prefix-map (kbd "<") 'eyebrowse-prev-window-config)
     (define-key prefix-map (kbd ">") 'eyebrowse-next-window-config)
     (define-key prefix-map (kbd "'") 'eyebrowse-last-window-config)
@@ -206,7 +205,13 @@ If t, ask for confirmation."
     (define-key prefix-map (kbd "9") 'eyebrowse-switch-to-window-config-9)
     (define-key prefix-map (kbd "c") 'eyebrowse-create-window-config)
     (define-key prefix-map (kbd "C-c") 'eyebrowse-create-window-config)
-    (define-key map eyebrowse-keymap-prefix prefix-map)
+    prefix-map)
+  "Initial prefix key map for `eyebrowse-mode'."
+  )
+
+(defvar eyebrowse-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map eyebrowse-keymap-prefix eyebrowse-mode-prefix-map)
     map)
   "Initial key map for `eyebrowse-mode'.")
 
