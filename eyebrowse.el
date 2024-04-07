@@ -518,13 +518,17 @@ prompt shown if none is given."
         ;; remove element from old-slot
         (eyebrowse--delete-window-config old-slot)))))
 
-(defun eyebrowse-consolidate-window-configs ()
+(defun eyebrowse-renumber-window-configs ()
   "Renumber existing window configs in integer order starting at 1,
 maintaining the same relative order and tags."
   (interactive)
   (let* ((window-configs (eyebrowse--get 'window-configs))
-         (slots (mapcar 'car window-configs)))
-    (--each-indexed slots (eyebrowse-move-window-config it (1+ it-index)))))
+         (slots (mapcar 'car window-configs))
+         ;; NOTE: pick either the smallest slot or 1, whichever is lower
+         (slot-index (min (or (car slots) 1) 1)))
+    (dolist (slot slots)
+      (eyebrowse-move-window-config slot slot-index)
+      (setq slot-index (1+ slot-index)))))
 
 ;; NOTE I've tried out generating the respective commands dynamically
 ;; with a macro, but this ended in unreadable code and Emacs not being
